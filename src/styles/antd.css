@@ -1,0 +1,74 @@
+
+
+.custom-segment {
+  border-radius: 999px !important;
+  background-color: #F4EEEC;
+  padding: 0px;
+}
+
+/* Outer container */
+.custom-segment .ant-segmented-group {
+  border-radius: 999px;
+}
+
+/* Thumb (active segment highlight) */
+.custom-segment .ant-segmented-thumb {
+  background-color: #ffffff;
+  border-radius: 999px !important;
+}
+
+/* Segment buttons */
+.custom-segment .ant-segmented-item {
+  padding: 2px 20px;
+  font-weight: 500;
+  border-radius: 999px;
+  color: #7f7f7f;
+}
+
+
+/* Active button text */
+.custom-segment .ant-segmented-item-selected {
+  color: rgb(0, 0, 0) !important;
+  border-radius:  999px !important;
+}
+
+/* Optional: hover effect */
+.custom-segment .ant-segmented-item:hover {
+  border-radius: 999px !important;
+}
+
+
+/* custome faq collapse */
+
+.custom-collapse .ant-collapse-header{
+    align-items: center !important;
+}
+.custom-collapse .ant-collapse-item{
+    border: 1px solid rgb(222, 222, 222) !important;
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+
+/* This targets the internal input placeholder */
+.custom-date input::placeholder {
+  color: #717171 !important; /* Your custom color here */
+}
+
+
+.profile-select .ant-select-selector {
+    border: 1px solid #f0f0f0 !important;
+    box-shadow: none !important;
+    
+}
+
+.custom-prompt-modal .ant-modal-content{
+  padding: 0px !important;
+  
+}
+
+.line {
+  transform: translateY(100%);
+  will-change: transform
+}

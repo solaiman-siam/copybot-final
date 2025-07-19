@@ -1,0 +1,56 @@
+{
+  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
+  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
+  "profile": { "name": "typicode" },
+  "chatList": {
+    "status": true,
+    "message": "User chat list retrieved.",
+    "data": [
+      {
+        "id": 10,
+        "title": "hey hello?"
+      },
+      {
+        "id": 9,
+        "title": "How is it going?"
+      },
+      {
+        "id": 10,
+        "title": "Create or generate a cv for job?"
+      },
+      {
+        "id": 9,
+        "title": "How is it going on the current time?"
+      }
+    ],
+    "code": "200"
+  },
+  "history": [
+    {
+      "id": 13,
+      "sender": "user",
+      "content": "please write a email template for developer jon",
+      "created_at": "2025-06-28T11:40:50.000000Z"
+    },
+    {
+      "id": 18,
+      "sender": "ai",
+      "content":
+        "Subject: Necessary Task Updates and Collaboration Request \n\nDear Jon,\n\nI hope this message finds you well and your code is running smoothly. I'm reaching out today to discuss some updates regarding our current project.\n\n[Insert brief description of the project and current status here.]\n\nBelow are a few tasks that we need you to focus on for the coming week:\n\n1. [Task One: Briefly describe the task, why it's necessary, and the intended outcome.]\n\n2. [Task Two: Outline its significance, what challenges might arise, and",
+      "created_at": "2025-06-28T11:40:58.000000Z"
+    },
+    {
+      "id": 15,
+      "sender": "user",
+      "content": "How you enjoy your days",
+      "created_at": "2025-06-28T11:40:50.000000Z"
+    },
+    {
+      "id": 16,
+      "sender": "ai",
+      "content":
+        "Subject: Necessary Task Updates and Collaboration Request \n\nDear Jon,\n\nI hope this message finds you well and your code is running smoothly. I'm reaching out today to discuss some updates regarding our current project.\n\n[Insert brief description of the project and current status here.]\n\nBelow are a few tasks that we need you to focus on for the coming week:\n\n1. [Task One: Briefly describe the task, why it's necessary, and the intended outcome.]\n\n2. [Task Two: Outline its significance, what challenges might arise, and provide suggestions on how to resolve them.]\n\n3. [Task Three: Explanation and recommendations.]\n\nAs you navigate through these tasks, we trust in your expertise and ability to isolate problems and devise efficient solutions. Your skills have consistently proven invaluable to the success of our past projects.\n\nThroughout this period, please keep us in the loop regarding any challenges or roadblocks you encounter. Your input helps us to continually refine our methods and approach. We encourage open communication, as collaboration is",
+      "created_at": "2025-06-28T11:40:58.000000Z"
+    }
+  ]
+}

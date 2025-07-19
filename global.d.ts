@@ -1,0 +1,1 @@
+declare module '@hugeicons-pro/core-stroke-standard';

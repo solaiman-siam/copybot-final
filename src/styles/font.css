@@ -1,0 +1,69 @@
+/* Light */
+@font-face {
+  font-family: 'Avantt TRIAL';
+  src: url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Light.eot');
+  src: url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Light.eot?#iefix') format('embedded-opentype'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Light.woff2') format('woff2'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Light.woff') format('woff'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Light.ttf') format('truetype'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Light.svg#AvanttTRIAL-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Regular */
+@font-face {
+  font-family: 'Avantt TRIAL';
+  src: url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Regular.eot');
+  src: url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Regular.eot?#iefix') format('embedded-opentype'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Regular.woff2') format('woff2'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Regular.woff') format('woff'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Regular.ttf') format('truetype'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Regular.svg#AvanttTRIAL-Regular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Medium */
+@font-face {
+  font-family: 'Avantt TRIAL';
+  src: url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Medium.eot');
+  src: url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Medium.eot?#iefix') format('embedded-opentype'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Medium.woff2') format('woff2'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Medium.woff') format('woff'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Medium.ttf') format('truetype'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Medium.svg#AvanttTRIAL-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* SemiBold */
+@font-face {
+  font-family: 'Avantt TRIAL';
+  src: url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-SemiBold.eot');
+  src: url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-SemiBold.eot?#iefix') format('embedded-opentype'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-SemiBold.woff2') format('woff2'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-SemiBold.woff') format('woff'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-SemiBold.ttf') format('truetype'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-SemiBold.svg#AvanttTRIAL-SemiBold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'Avantt TRIAL';
+  src: url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Bold.eot');
+  src: url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Bold.eot?#iefix') format('embedded-opentype'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Bold.woff2') format('woff2'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Bold.woff') format('woff'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Bold.ttf') format('truetype'),
+       url('../assets/fonts/Avantt_TRIAL_Font/AvanttTRIAL-Bold.svg#AvanttTRIAL-Bold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

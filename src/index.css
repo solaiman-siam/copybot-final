@@ -1,0 +1,114 @@
+@import "tailwindcss";
+@import "./styles/font.css";
+@import "./styles/antd.css";
+
+@theme {
+  --font-avant: "Avantt TRIAL", "sans-serif";
+  --color-primary-btn: #ff6a00;
+  --color-description: #595959;
+  --color-textPrimary: #141413;
+  --shadow-btn: 0px 0px 20px 4px;
+  --shadow-hero: -100px 0px 200px 1px;
+  --shadow-meetbot: 0px -100px 400px 1px;
+}
+
+.lines {
+  transform: translateY(100%);
+  will-change: transform;
+}
+
+.copy-line {
+  display: block;
+  overflow: hidden;
+}
+
+.no-hover {
+  pointer-events: none; /* disables hover/click */
+}
+
+.right-text {
+  will-change: transform;
+  transform: translateZ(0); /* Triggers GPU acceleration */
+}
+
+.pinned-container {
+  position: relative;
+  overflow: visible;
+}
+
+.ant-popover-content,
+.ant-popconfirm-buttons {
+  font-size: 16px !important;
+}
+
+.blur-effect {
+  filter: blur(3px);
+  transition: filter 0.3s ease;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px; 
+  width: 300px;
+  height: 100vh;
+  background: white;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+}
+
+.sidebar.open {
+  left: 0; 
+}
+
+
+.typewriter-text {
+  white-space: pre-wrap;
+}
+
+.blinking-cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.chatListScroll {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #454545 #f1f1f1;
+  scroll-behavior: smooth;
+}
+
+/* Webkit styles with transitions */
+.chatListScroll::-webkit-scrollbar {
+  width: 10px;
+  transition: all 0.3s ease;
+}
+
+.chatListScroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.chatListScroll::-webkit-scrollbar-thumb {
+  background: #cecdcd;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.chatListScroll::-webkit-scrollbar-thumb:hover {
+  background: #c20707;
+  width: 12px;
+}
+
+.chatListScroll::-webkit-scrollbar-thumb:active {
+  background: #dedede;
+}
+
+
+.custom-swal-font {
+  font-family:"Avantt TRIAL", "sans-serif" !important;
+}
