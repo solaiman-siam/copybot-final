@@ -151,52 +151,7 @@ export const promtsCategory: TPromtsCategory[] = [
         name: "Crisis Communication",
         prompt:
           "Create a company statement addressing a customer service issue.",
-      },
-      {
-        name: "Press Release",
-        prompt:
-          "Draft a professional press release announcing a new partnership.",
-      },
-      {
-        name: "Media Pitch",
-        prompt:
-          "Write a concise media pitch to secure a feature in a tech magazine.",
-      },
-      {
-        name: "Crisis Communication",
-        prompt:
-          "Create a company statement addressing a customer service issue.",
-      },
-      {
-        name: "Press Release",
-        prompt:
-          "Draft a professional press release announcing a new partnership.",
-      },
-      {
-        name: "Media Pitch",
-        prompt:
-          "Write a concise media pitch to secure a feature in a tech magazine.",
-      },
-      {
-        name: "Crisis Communication",
-        prompt:
-          "Create a company statement addressing a customer service issue.",
-      },
-      {
-        name: "Press Release",
-        prompt:
-          "Draft a professional press release announcing a new partnership.",
-      },
-      {
-        name: "Media Pitch",
-        prompt:
-          "Write a concise media pitch to secure a feature in a tech magazine.",
-      },
-      {
-        name: "Crisis Communication",
-        prompt:
-          "Create a company statement addressing a customer service issue.",
-      },
+      }
     ],
   },
   {
