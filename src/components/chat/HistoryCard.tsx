@@ -22,7 +22,7 @@ const HistoryCard = ({ fullImageUrl } : {fullImageUrl: string | null }) => {
 
   return (
     <div className="pt-8">
-      {prevHistoryData.map((history , index) => (
+      {prevHistoryData.slice(newChat ? 2 : 0).map((history , index) => (
         <div key={history.id} className=" flex flex-col   ">
           {history?.sender === "user" && (
             <div className="flex justify-end items-start pb-6 pt-10  gap-3">
