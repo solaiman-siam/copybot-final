@@ -38,22 +38,23 @@ function Footer() {
       toast.error(errorMessage)
     }
   };
+
+  
  
   return (
     <div className="bg-[#141413] lg:px-0 px-4 pt-16">
       <Container>
-        <div className="grid gap-10 lg:gap-0 lg:grid-cols-12">
-          <div className="col-span-4 w-full flex flex-col gap-10 lg:gap-20">
+        <div className="grid gap-10 lg:gap-10 lg:grid-cols-12">
+          <div className="col-span-4 w-full flex flex-col ">
             <img className="w-fit" src={imageProvider.CopybotLogo} alt="" />
+            <div className="py-8">
+              <p className="text-white w-10/12">Streamline your workflow with intelligent search and customizable AI prompts. Designed to boost productivity.
+               </p>
+            </div>
             <div className="flex flex-col ">
               <Copy delay={0.3}>
                 <h3 className="pb-4 text-[17px] text-white">Contact Us</h3>
               </Copy>
-              {/* <Copy delay={0.3}>
-                <h4 className="text-white">
-                  <span className="text-primary-btn">Call</span>: (941) 685-1504
-                </h4>
-              </Copy> */}
               <Copy delay={0.3}>
                 <h4 className="text-white">
                   <span className="text-primary-btn">Email</span>:{" "}

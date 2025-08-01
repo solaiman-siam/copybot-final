@@ -1,11 +1,18 @@
-import { Empty, Modal, Popconfirm, Segmented, type PopconfirmProps } from "antd";
+import {
+  Empty,
+  Modal,
+  Popconfirm,
+  Segmented,
+  type PopconfirmProps,
+} from "antd";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { useLazyCancelPlanQuery, useTransactionListQuery } from "../../redux/features/subscribe/subscribeApi";
+import {
+  useLazyCancelPlanQuery,
+  useTransactionListQuery,
+} from "../../redux/features/subscribe/subscribeApi";
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import toast from "react-hot-toast";
-
-
 
 function SubscriptionPage() {
   type Align = "Monthly" | "Anually";
@@ -22,15 +29,12 @@ function SubscriptionPage() {
   const { data } = useTransactionListQuery("");
   const invoiceList = data?.data;
 
-
   // cancel plan
-    const [
-      cancelPlan,
-      { data: cancelResponse, isError: isCancelError, isSuccess, error },
-    ] = useLazyCancelPlanQuery();
+  const [
+    cancelPlan,
+    { data: cancelResponse, isError: isCancelError, isSuccess, error },
+  ] = useLazyCancelPlanQuery();
 
-
-  
   // server route section
   useEffect(() => {
     if (isCancelError) {
@@ -45,12 +49,24 @@ function SubscriptionPage() {
     }
   }, [cancelResponse, isCancelError, isSuccess, error]);
 
-  
-
-  const handleCancelPlan: PopconfirmProps["onConfirm"] = async() => {
-    await cancelPlan('');
-
+  const handleCancelPlan: PopconfirmProps["onConfirm"] = async () => {
+    await cancelPlan("");
   };
+
+  const inActivePlan = {
+    planStatus: false,
+    data: null,
+  };
+
+  const activePlan = {
+    planStatus: true,
+    planName: "monthly",
+    startDate: "10-12-2025",
+    endDate: "20-12-2025",
+  };
+
+  const planStatus = true;
+
   return (
     <div className="rounded-2xl  border border-black/10  p-5 lg:p-8">
       <h3 className="text-2xl font-semibold pb-8 "> Overview</h3>
@@ -105,8 +121,8 @@ function SubscriptionPage() {
               </span>
             </h4>
             <div className="lg:pt-8 pt-5">
-              <button className="w-full py-3 rounded-lg cursor-pointer bg-black/20 text-description font-medium">
-                Current Plan
+              <button disabled={planStatus} className="w-full disabled:cursor-not-allowed py-3 rounded-lg cursor-pointer bg-black/20 text-description font-medium">
+                Free Plan
               </button>
             </div>
           </div>
@@ -121,11 +137,24 @@ function SubscriptionPage() {
               </span>
               /{alignValue === "Monthly" ? "monthly" : "anually"}
             </h4>
-            <Link to={"/upgrade-plan"} className="">
-              <button className="w-full py-3 mt-8 rounded-lg cursor-pointer border bg-black text-white font-medium">
-                Upgrade to Pro
-              </button>
-            </Link>
+            {
+              <div className=" pb-4 mt-8">
+                {planStatus ? (
+                  <button
+                    disabled={planStatus}
+                    className="w-full h-12 flex justify-center items-center  group-hover:shadow-primary-btn/80 transition-all duration-300 shadow-btn shadow-primary-btn/40 capitalize disabled:cursor-not-allowed bg-black text-white  rounded-lg border font-medium cursor-pointer border-black/40 "
+                  >
+                    {`${activePlan.planName} Plan Activated`}
+                  </button>
+                ) : (
+                  <Link to={"/upgrade-plan"} className="">
+                    <button className="w-full py-3 mt-8 rounded-lg cursor-pointer border bg-black text-white font-medium">
+                      Upgrade to Pro
+                    </button>
+                  </Link>
+                )}
+              </div>
+            }
           </div>
         </div>
       </div>
@@ -162,18 +191,17 @@ function SubscriptionPage() {
                 workspace through the end of the month.
               </p>
             </div>
-             <Popconfirm
-            title="Subscription"
-            description="Are you sure to cancel subscription? "
-            onConfirm={handleCancelPlan}
-            okText="Yes"
-            cancelText="No"
-          >
-            <button  className="w-40 py-2.5 font-medium rounded-lg border border-red-400 text-red-500 cursor-pointer  text-nowrap">
-              Cancel Plan
-            </button>
-          </Popconfirm>
-           
+            <Popconfirm
+              title="Subscription"
+              description="Are you sure to cancel subscription? "
+              onConfirm={handleCancelPlan}
+              okText="Yes"
+              cancelText="No"
+            >
+              <button className="w-40 py-2.5 font-medium rounded-lg border border-red-400 text-red-500 cursor-pointer  text-nowrap">
+                Cancel Plan
+              </button>
+            </Popconfirm>
           </div>
         </div>
       </div>
@@ -186,22 +214,39 @@ function SubscriptionPage() {
         onCancel={() => setIsModalOpen(false)}
       >
         <div className="p-4 space-y-5">
-
-          {invoiceList?.length < 1 ? <> <Empty/> </> : invoiceList?.map((invoice : {exp_year : string, amount: number , plan_name: string}) => (
-            <div className="flex flex-col gap-2 ">
-              <div className=" flex px-8  justify-between items-center">
-                <h4 className="font-medium">Period</h4>
-                <h4 className="font-medium">Amount</h4>
-                <h4 className="font-medium">Plan</h4>
-              </div>
-              <div className="border px-4 py-3 flex justify-between rounded-xl border-black/10">
-                <h4 className="font-medium translate-x-4">{invoice?.exp_year}</h4>
-                <h4 className="font-medium translate-x-3">${invoice?.amount}</h4>
-                <h4 className="font-medium -translate-x-2 capitalize">{invoice?.plan_name}</h4>
-              </div>
-            </div>
-          ))}
-          
+          {invoiceList?.length < 1 ? (
+            <>
+              {" "}
+              <Empty />{" "}
+            </>
+          ) : (
+            invoiceList?.map(
+              (invoice: {
+                exp_year: string;
+                amount: number;
+                plan_name: string;
+              }) => (
+                <div className="flex flex-col gap-2 ">
+                  <div className=" flex px-8  justify-between items-center">
+                    <h4 className="font-medium">Period</h4>
+                    <h4 className="font-medium">Amount</h4>
+                    <h4 className="font-medium">Plan</h4>
+                  </div>
+                  <div className="border px-4 py-3 flex justify-between rounded-xl border-black/10">
+                    <h4 className="font-medium translate-x-4">
+                      {invoice?.exp_year}
+                    </h4>
+                    <h4 className="font-medium translate-x-3">
+                      ${invoice?.amount}
+                    </h4>
+                    <h4 className="font-medium -translate-x-2 capitalize">
+                      {invoice?.plan_name}
+                    </h4>
+                  </div>
+                </div>
+              )
+            )
+          )}
         </div>
       </Modal>
     </div>

@@ -31,6 +31,21 @@ function UpgradePlan() {
     }
   };
 
+  const inActivePlan = {
+    planStatus: false,
+    data: null
+  }
+  
+
+  const activePlan = {
+    planStatus : true,
+    planName: 'monthly',
+    startDate: '10-12-2025',
+    endDate: '20-12-2025'
+  }
+
+  const planStatus = true
+
 
   return (
     <div className="min-h-screen px-4 py-20 lg:py-0 lg:px-0 relative font-avant flex items-center justify-center">
@@ -61,7 +76,7 @@ function UpgradePlan() {
                     </h3>
                   </div>
                   <div className=" pb-4 mt-14">
-                    <button className="w-full py-2.5 rounded-lg border font-medium cursor-pointer border-black/40 ">
+                    <button disabled={planStatus} className="w-full disabled:cursor-not-allowed py-2.5 rounded-lg border font-medium cursor-pointer border-black/40 ">
                       Stay on Free Plan
                     </button>
                   </div>
@@ -96,7 +111,17 @@ function UpgradePlan() {
                     </h3>
                   </div>
                   <div className=" pb-4 mt-14">
-                    <button
+                    {
+                      planStatus ? <button disabled={planStatus}
+                      onClick={handleUpgradeSubscription}
+                      className="w-full h-12 flex justify-center items-center  group-hover:shadow-primary-btn/80 transition-all duration-300 shadow-btn shadow-primary-btn/40 capitalize disabled:cursor-not-allowed bg-black text-white  rounded-lg border font-medium cursor-pointer border-black/40 "
+                    >
+                    
+                        {
+                          `${activePlan.planName} Plan Activated`
+                        }
+                     
+                    </button> : <button
                       onClick={handleUpgradeSubscription}
                       className="w-full h-12 flex justify-center items-center  group-hover:shadow-primary-btn/80 transition-all duration-300 shadow-btn shadow-primary-btn/40  bg-black text-white  rounded-lg border font-medium cursor-pointer border-black/40 "
                     >
@@ -106,6 +131,7 @@ function UpgradePlan() {
                         "Upgrade to Pro"
                       )}
                     </button>
+                    }
                   </div>
                 </div>
                 <div className="px-10 pb-10 space-y-3 pt-6">

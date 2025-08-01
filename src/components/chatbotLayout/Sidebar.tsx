@@ -50,27 +50,24 @@ function Sidebar() {
   // const currentPassword = useAppSelector(state => state.auth.user.)
   const chatList: TChatList[] = chatListData?.data || [];
 
-
   const [isCancelSubscriptionModalOpen, setIsCancelSubscriptionModalOpen] =
     useState<boolean>(false);
-  const [triggerHistory] =
-    useLazyHistoryQuery();
+  const [triggerHistory] = useLazyHistoryQuery();
 
   // history
-  const handleGetHistory = async(id: number) => {
+  const handleGetHistory = async (id: number) => {
     if (!id) return;
     dispatch(setHistoryLoading(true));
-    try{
+    try {
       const res = await triggerHistory(id);
       // if(res?.data) {
-        console.log( 'chatHistory',res?.data);
-        dispatch(setChatToHistory(res?.data?.data?.data))
-      dispatch(setHistoryLoading(false)); 
-      dispatch(setChatIdToPrompt(id)); 
-      dispatch(setNewChat(false))
+      console.log("chatHistory", res?.data);
+      dispatch(setChatToHistory(res?.data?.data?.data));
+      dispatch(setHistoryLoading(false));
+      dispatch(setChatIdToPrompt(id));
+      dispatch(setNewChat(false));
       // }
-      
-    }catch(error) {
+    } catch (error) {
       console.log(error);
     }
   };
@@ -139,6 +136,20 @@ function Sidebar() {
   };
 
   const sidebarRef = useRef<HTMLDivElement>(null);
+
+  const inActivePlan = {
+    planStatus: false,
+    data: null,
+  };
+
+  const activePlan = {
+    planStatus: true,
+    planName: "monthly",
+    startDate: "10-12-2025",
+    endDate: "20-12-2025",
+  };
+
+  const planStatus = true;
 
   return (
     <div
@@ -237,21 +248,23 @@ function Sidebar() {
           </div>
         ) : (
           <div>
-            <div>
-              <div className="flex flex-col items-center gap-2">
-                <h4 className="w-full gap-1 text-sm flex rounded-md h-8 lg:h-12 justify-center items-center lg:text-lg font-semibold text-black">
-                  <span className="capitalize  ">{planInfo?.plan}</span>
-                  <span>Plan Activated</span>
-                </h4>
+            {planStatus ? (
+              <div>
+                <div className="flex flex-col items-center gap-2">
+                  <h4 className="w-full gap-1 text-sm flex rounded-md  justify-center items-center lg:text-lg font-semibold text-black">
+                    <span className="capitalize  ">{activePlan.planName}</span>
+                    <span>Plan Activated</span>
+                  </h4>
+                  <h4 className="text-sm">Valid until: {activePlan.endDate}</h4>
+                </div>
+                <button
+                  onClick={() => setIsCancelSubscriptionModalOpen(true)}
+                  className="w-full mt-4 bg-black h-10 text-sm lg:text-base lg:h-12 text-white rounded-md font-medium"
+                >
+                  Cancel Plan
+                </button>
               </div>
-              <button
-                onClick={() => setIsCancelSubscriptionModalOpen(true)}
-                className="w-full mt-4 bg-black h-10 text-sm lg:text-base lg:h-12 text-white rounded-md font-medium"
-              >
-                Cancel Plan
-              </button>
-            </div>
-            {promptLimit?.data?.limit && (
+            ) : (
               <div>
                 <h3 className="text-lg font-semibold  pb-2">Free trial</h3>
                 <div>

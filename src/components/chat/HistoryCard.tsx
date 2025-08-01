@@ -63,7 +63,6 @@ const HistoryCard = ({ fullImageUrl } : {fullImageUrl: string | null }) => {
                   </h4>
                 </CopyToClipboard>
               </div>
-
               <p className="font-medium bg-black/5 typewriter-text rounded-b-xl p-4 text-black/80">
                 {history?.content}
               </p>
