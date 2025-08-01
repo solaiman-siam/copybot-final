@@ -53,10 +53,7 @@ function SubscriptionPage() {
     await cancelPlan("");
   };
 
-  const inActivePlan = {
-    planStatus: false,
-    data: null,
-  };
+
 
   const activePlan = {
     planStatus: true,

@@ -3,7 +3,7 @@ import { imageProvider } from "../../utils/imageProvider";
 import { Empty, Modal, Popconfirm, Progress, Skeleton } from "antd";
 import { Link, useNavigate } from "react-router";
 import {
-  useCurrentPlanQuery,
+  // useCurrentPlanQuery,
   useLazyCancelPlanQuery,
   usePromptLimitQuery,
 } from "../../redux/features/subscribe/subscribeApi";
@@ -91,9 +91,9 @@ function Sidebar() {
   const handleNewChat = () => {
     dispatch(setNewChat(true));
   };
-  const { data: currentPlanInfo } = useCurrentPlanQuery("");
+  // const { data: currentPlanInfo } = useCurrentPlanQuery("");
 
-  const planInfo = currentPlanInfo?.data;
+  // const planInfo = currentPlanInfo?.data;
 
   const [
     cancelPlan,
@@ -137,10 +137,7 @@ function Sidebar() {
 
   const sidebarRef = useRef<HTMLDivElement>(null);
 
-  const inActivePlan = {
-    planStatus: false,
-    data: null,
-  };
+
 
   const activePlan = {
     planStatus: true,

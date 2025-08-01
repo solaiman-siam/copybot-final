@@ -53,10 +53,7 @@ function ExplorePlan() {
     });
   }, []);
 
-  const inActivePlan = {
-    planStatus: false,
-    data: null,
-  };
+
 
   const activePlan = {
     planStatus: true,

@@ -31,10 +31,7 @@ function UpgradePlan() {
     }
   };
 
-  const inActivePlan = {
-    planStatus: false,
-    data: null
-  }
+
   
 
   const activePlan = {
