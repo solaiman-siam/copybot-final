@@ -13,7 +13,7 @@ const subscribeApi = baseApi.injectEndpoints({
         };
       },
     }),
-    promptLimit: builder.query({
+    currentPlanInfo: builder.query({
       query: () => ({
         url: "/user/free-plan-usage",
         method: "GET",
@@ -62,7 +62,7 @@ const subscribeApi = baseApi.injectEndpoints({
 
 export const {
   useSubscribeNewsLetterMutation,
-  usePromptLimitQuery,
+  useCurrentPlanInfoQuery,
   useUpgradePlanMutation,
   useConfirmPlanMutation,
   useCurrentPlanQuery,

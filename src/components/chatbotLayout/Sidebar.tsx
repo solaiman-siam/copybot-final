@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router";
 import {
   // useCurrentPlanQuery,
   useLazyCancelPlanQuery,
-  usePromptLimitQuery,
+  useCurrentPlanInfoQuery,
 } from "../../redux/features/subscribe/subscribeApi";
 
 import toast from "react-hot-toast";
@@ -38,7 +38,7 @@ type Inputs = {
 function Sidebar() {
   // get chat list
   const { data: promptLimit, isLoading: promptLimitLoading } =
-    usePromptLimitQuery(undefined);
+    useCurrentPlanInfoQuery(undefined);
 
   const promotLimitData = promptLimit?.data?.limit * 10;
 

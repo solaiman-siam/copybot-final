@@ -4,13 +4,20 @@ import { imageProvider } from "../utils/imageProvider";
 import { useState } from "react";
 import { Loader, X } from "lucide-react";
 import { Link } from "react-router";
-import { useUpgradePlanMutation } from "../redux/features/subscribe/subscribeApi";
+import { useCurrentPlanInfoQuery, useUpgradePlanMutation } from "../redux/features/subscribe/subscribeApi";
 import toast from "react-hot-toast";
 
 function UpgradePlan() {
   type Align = "Monthly" | "Annually";
   const [alignValue, setAlignValue] = useState<Align>("Monthly");
   const [upgradePlan, { isLoading }] = useUpgradePlanMutation();
+
+
+// get chat list
+  const { data: currentPlanInfo } =
+    useCurrentPlanInfoQuery(null);
+
+    console.log(currentPlanInfo?.data);
 
   const handleUpgradeSubscription = async () => {
     if (alignValue) {
@@ -32,16 +39,10 @@ function UpgradePlan() {
   };
 
 
+
+
   
 
-  const activePlan = {
-    planStatus : true,
-    planName: 'monthly',
-    startDate: '10-12-2025',
-    endDate: '20-12-2025'
-  }
-
-  const planStatus = true
 
 
   return (
@@ -73,7 +74,7 @@ function UpgradePlan() {
                     </h3>
                   </div>
                   <div className=" pb-4 mt-14">
-                    <button disabled={planStatus} className="w-full disabled:cursor-not-allowed py-2.5 rounded-lg border font-medium cursor-pointer border-black/40 ">
+                    <button disabled={currentPlanInfo?.data?.subscription !== 'free'} className="w-full disabled:cursor-not-allowed py-2.5 rounded-lg border font-medium cursor-pointer border-black/40 ">
                       Stay on Free Plan
                     </button>
                   </div>
@@ -109,13 +110,13 @@ function UpgradePlan() {
                   </div>
                   <div className=" pb-4 mt-14">
                     {
-                      planStatus ? <button disabled={planStatus}
+                      currentPlanInfo?.data?.subscription !== 'free' ? <button disabled={currentPlanInfo?.data?.subscription !== 'free'}
                       onClick={handleUpgradeSubscription}
                       className="w-full h-12 flex justify-center items-center  group-hover:shadow-primary-btn/80 transition-all duration-300 shadow-btn shadow-primary-btn/40 capitalize disabled:cursor-not-allowed bg-black text-white  rounded-lg border font-medium cursor-pointer border-black/40 "
                     >
                     
                         {
-                          `${activePlan.planName} Plan Activated`
+                          `${currentPlanInfo?.data?.subscription} Plan Activated`
                         }
                      
                     </button> : <button
