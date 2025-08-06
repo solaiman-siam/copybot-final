@@ -68,7 +68,7 @@ function AboutYourself() {
       email: email,
     };
 
-    console.log(userInfo);
+    // console.log(userInfo);
 
     const res = await registerUser(userInfo).unwrap();
     dispatch(setUser({ user: res?.data?.userData, token: res?.data?.token }));

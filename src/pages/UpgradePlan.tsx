@@ -17,7 +17,7 @@ function UpgradePlan() {
   const { data: currentPlanInfo } =
     useCurrentPlanInfoQuery(null);
 
-    console.log(currentPlanInfo);
+    // console.log(currentPlanInfo);
 
 
   const handleUpgradeSubscription = async () => {

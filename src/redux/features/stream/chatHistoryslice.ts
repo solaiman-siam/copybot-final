@@ -52,7 +52,7 @@ export const chatHistorySlice = createSlice({
     },
     setChatIdToPrompt: (state, action) => {
       state.chatId = action.payload;
-      console.log(action.payload);
+      // console.log(action.payload);
     },
     setNewChat: (state, action) => {
       state.newChat = action.payload;

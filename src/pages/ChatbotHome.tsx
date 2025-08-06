@@ -77,7 +77,7 @@ function ChatbotHome() {
   const [finalPrompt, setFinalPrompt] = useState("");
   const [generateChat] = useChatMutation();
   const chatId = useAppSelector((state) => state?.chatHistory?.chatId);
-  console.log('chatId', chatId);
+  // console.log("chatId", chatId);
   const newChat = useAppSelector((state) => state?.chatHistory?.newChat);
   const historyLoading = useAppSelector(
     (state) => state?.chatHistory?.historyLoading
@@ -116,7 +116,6 @@ function ChatbotHome() {
     }
   };
 
-
   // handleStream
   const handleStream = async () => {
     dispatch(setNewChat(false));
@@ -132,8 +131,21 @@ function ChatbotHome() {
       try {
         setWaiting(true);
         const aiResponse = await generateChat(chatText);
+        if(aiResponse.error) {
+          toast.error(aiResponse?.error?.data?.message)
+          setWaiting(false);
+        setPromptValue("");
+        setPrompt("");
+          return;
+        }
         setResponse(aiResponse?.data?.data?.ai);
-        dispatch(setNewChatToHistory({response: aiResponse?.data?.data?.ai, prompt: aiResponse?.data?.data?.user , chatId: aiResponse?.data?.data?.chat_id}))
+        dispatch(
+          setNewChatToHistory({
+            response: aiResponse?.data?.data?.ai,
+            prompt: aiResponse?.data?.data?.user,
+            chatId: aiResponse?.data?.data?.chat_id,
+          })
+        );
         setWaiting(false);
         setPromptValue("");
         setPrompt("");
@@ -142,22 +154,16 @@ function ChatbotHome() {
         }
       } catch (err) {
         console.log(err);
+        
       }
     }
   };
-
-
-
-
-
 
   const { data: promptList } = useGetpromptListQuery(undefined, {
     pollingInterval: 30000,
   });
 
   const promptData = promptList?.data;
-
- 
 
   const [customPromptIndex, setCustomPromptIndex] = useState<number>(0);
 
@@ -228,19 +234,19 @@ function ChatbotHome() {
       ) : (
         <div className=" justify-start mb-40 px-4 lg:px-24 w-full  lg:w-[1000px] mx-auto">
           <div className="font-avant w-full lg:w-[799px] mx-auto flex-col flex  ">
-              <div className="flex justify-end items-start   gap-4">
-                <h4 className="font-medium flex-1 capitalize">{finalPrompt}</h4>
-                <div className="size-8 lg:size-10">
-                  <img
-                    className="w-8 h-8 rounded-full object-cover "
-                    src={
-                      fullImageUrl ||
-                      "https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
-                    }
-                    alt="profile"
-                  />
-                </div>
+            <div className="flex justify-end items-start   gap-4">
+              <h4 className="font-medium flex-1 capitalize">{finalPrompt}</h4>
+              <div className="size-8 lg:size-10">
+                <img
+                  className="w-8 h-8 rounded-full object-cover "
+                  src={
+                    fullImageUrl ||
+                    "https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
+                  }
+                  alt="profile"
+                />
               </div>
+            </div>
             <div
               className={` flex justify-end  ${
                 waiting ? "animate-pulse" : ""
@@ -296,7 +302,7 @@ function ChatbotHome() {
               </div>
             </div>
           </div>
-          <HistoryCard fullImageUrl={fullImageUrl}/>
+          <HistoryCard fullImageUrl={fullImageUrl} />
         </div>
       )}
       <div className=" rounded-2xl z-10 w-[92%] lg:w-[800px]    fixed border  border-black/10 overflow-hidden bottom-5  lg:bottom-16 ">
@@ -332,7 +338,7 @@ function ChatbotHome() {
               if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
                 if (prompt) {
-                  handleStream()
+                  handleStream();
                 }
               }
             }}
@@ -353,7 +359,7 @@ function ChatbotHome() {
           </div>
           <div className=" pr-2">
             <button
-             type="submit"
+              type="submit"
               onClick={handleStream}
               className="bg-black/80 cursor-pointer p-2.5 rounded-full text-white"
             >
@@ -427,7 +433,7 @@ function ChatbotHome() {
                     </span>{" "}
                     Create Custom Prompt
                   </h4>
-<AddNewPrompt />
+                  <AddNewPrompt />
                   <div className="pt-4">
                     {promptData?.map((prompt: IPrompt, idx: number) => (
                       <h4

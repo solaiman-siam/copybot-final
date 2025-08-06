@@ -39,10 +39,10 @@ function Sidebar() {
   const { data: currentPlan, isLoading: promptLimitLoading } =
     useCurrentPlanInfoQuery(undefined);
 
-  const promptUsed = currentPlan?.data?.used * 10;
+  const promptUsed = currentPlan?.data?.used * 20;
   const currentPlanData = currentPlan?.data
 
-  console.log(currentPlanData);
+  // console.log(currentPlanData);
 
   const { data: chatListData, isLoading: chatListLoading } =
     useChatListQuery(undefined);
@@ -63,7 +63,7 @@ function Sidebar() {
     try {
       const res = await triggerHistory(id);
       // if(res?.data) {
-      console.log("chatHistory", res?.data);
+      // console.log("chatHistory", res?.data);
       dispatch(setChatToHistory(res?.data?.data?.data));
       dispatch(setHistoryLoading(false));
       dispatch(setChatIdToPrompt(id));
@@ -110,7 +110,7 @@ function Sidebar() {
       current_password: data?.current_password,
     };
 
-    console.log(passInfo);
+    // console.log(passInfo);
     if (passInfo) {
       await cancelPlan(passInfo);
     }
