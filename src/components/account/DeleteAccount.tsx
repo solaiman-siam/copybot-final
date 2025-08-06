@@ -5,6 +5,8 @@ import toast from "react-hot-toast";
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { Modal } from "antd";
 import { useDeleteAccountMutation } from "../../redux/features/auth/authApi";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../../redux/features/auth/authSlice";
 
 
 interface Inputs {
@@ -14,12 +16,14 @@ interface Inputs {
 const DeleteAccount = () => {
   const [deleteAccount, { data, isError, isSuccess, isLoading, error }] =
    useDeleteAccountMutation();
+  const dispatch = useDispatch()
   const { register, formState: { errors }, reset, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     if (data.ticket === 'delete') {
       await deleteAccount('');
       reset()
       setIsModalOpen(false);
+      dispatch(logoutUser())
     }
     
   };

@@ -33,8 +33,6 @@ export const authSlice = createSlice({
         const user = action.payload;
         state.user = {...state.user, ...user}
       }
-      
-      
     }
 
 })

@@ -3,7 +3,6 @@ import { imageProvider } from "../../utils/imageProvider";
 import { Empty, Modal, Popconfirm, Progress, Skeleton } from "antd";
 import { Link, useNavigate } from "react-router";
 import {
-  // useCurrentPlanQuery,
   useLazyCancelPlanQuery,
   useCurrentPlanInfoQuery,
 } from "../../redux/features/subscribe/subscribeApi";
@@ -37,10 +36,13 @@ type Inputs = {
 
 function Sidebar() {
   // get chat list
-  const { data: promptLimit, isLoading: promptLimitLoading } =
+  const { data: currentPlan, isLoading: promptLimitLoading } =
     useCurrentPlanInfoQuery(undefined);
 
-  const promotLimitData = promptLimit?.data?.limit * 10;
+  const promptUsed = currentPlan?.data?.used * 10;
+  const currentPlanData = currentPlan?.data
+
+  console.log(currentPlanData);
 
   const { data: chatListData, isLoading: chatListLoading } =
     useChatListQuery(undefined);
@@ -91,9 +93,11 @@ function Sidebar() {
   const handleNewChat = () => {
     dispatch(setNewChat(true));
   };
-  // const { data: currentPlanInfo } = useCurrentPlanQuery("");
+  
 
-  // const planInfo = currentPlanInfo?.data;
+  
+
+
 
   const [
     cancelPlan,
@@ -139,14 +143,7 @@ function Sidebar() {
 
 
 
-  const activePlan = {
-    planStatus: true,
-    planName: "monthly",
-    startDate: "10-12-2025",
-    endDate: "20-12-2025",
-  };
 
-  const planStatus = true;
 
   return (
     <div
@@ -245,14 +242,14 @@ function Sidebar() {
           </div>
         ) : (
           <div>
-            {planStatus ? (
+            {currentPlanData?.plan_name !== 'free' ? (
               <div>
                 <div className="flex flex-col items-center gap-2">
                   <h4 className="w-full gap-1 text-sm flex rounded-md  justify-center items-center lg:text-lg font-semibold text-black">
-                    <span className="capitalize  ">{activePlan.planName}</span>
+                    <span className="capitalize  ">{currentPlanData?.plan_name}</span>
                     <span>Plan Activated</span>
                   </h4>
-                  <h4 className="text-sm">Valid until: {activePlan.endDate}</h4>
+                  <h4 className="text-sm">Valid until: {currentPlanData?.start_date}</h4>
                 </div>
                 <button
                   onClick={() => setIsCancelSubscriptionModalOpen(true)}
@@ -270,17 +267,17 @@ function Sidebar() {
                       Limit
                     </h4>
                     <h4 className="font-medium text-lg text-textPrimary">
-                      {promptLimit?.data?.limit}/5
+                      {currentPlanData?.used}/5
                     </h4>
                   </div>
                   <Progress
-                    strokeColor={promotLimitData === 100 ? "red" : "black"}
-                    percent={promotLimitData}
+                    strokeColor={promptUsed === 100 ? "red" : "black"}
+                    percent={promptUsed}
                     showInfo={false}
                   />
                 </div>
                 <p className="text-black/80 text-sm pt-1 font-medium">
-                  Get up to 3 free AI prompts daily. Need more? Upgrade to
+                  Get up to 5 free AI prompts daily. Need more? Upgrade to
                   unlock unlimited access and boost your productivity
                 </p>
                 <div className="flex mt-4 items-center cursor-pointer bg-black text-white px-4 py-3 rounded-lg justify-center gap-3">

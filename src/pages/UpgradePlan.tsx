@@ -17,7 +17,8 @@ function UpgradePlan() {
   const { data: currentPlanInfo } =
     useCurrentPlanInfoQuery(null);
 
-    console.log(currentPlanInfo?.data);
+    console.log(currentPlanInfo);
+
 
   const handleUpgradeSubscription = async () => {
     if (alignValue) {
@@ -37,12 +38,6 @@ function UpgradePlan() {
       }
     }
   };
-
-
-
-
-  
-
 
 
   return (
@@ -74,7 +69,7 @@ function UpgradePlan() {
                     </h3>
                   </div>
                   <div className=" pb-4 mt-14">
-                    <button disabled={currentPlanInfo?.data?.subscription !== 'free'} className="w-full disabled:cursor-not-allowed py-2.5 rounded-lg border font-medium cursor-pointer border-black/40 ">
+                    <button disabled={currentPlanInfo?.data?.plan_name !== 'free'} className="w-full disabled:cursor-not-allowed py-2.5 rounded-lg border font-medium cursor-pointer border-black/40 ">
                       Stay on Free Plan
                     </button>
                   </div>
@@ -110,13 +105,13 @@ function UpgradePlan() {
                   </div>
                   <div className=" pb-4 mt-14">
                     {
-                      currentPlanInfo?.data?.subscription !== 'free' ? <button disabled={currentPlanInfo?.data?.subscription !== 'free'}
+                      currentPlanInfo?.data?.plan_name !== 'free' ? <button disabled={currentPlanInfo?.data?.plan_name !== 'free'}
                       onClick={handleUpgradeSubscription}
                       className="w-full h-12 flex justify-center items-center  group-hover:shadow-primary-btn/80 transition-all duration-300 shadow-btn shadow-primary-btn/40 capitalize disabled:cursor-not-allowed bg-black text-white  rounded-lg border font-medium cursor-pointer border-black/40 "
                     >
                     
                         {
-                          `${currentPlanInfo?.data?.subscription} Plan Activated`
+                          `${currentPlanInfo?.data?.plan_name} Plan Activated`
                         }
                      
                     </button> : <button

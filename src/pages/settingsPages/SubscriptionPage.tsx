@@ -8,6 +8,7 @@ import {
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import {
+  useCurrentPlanInfoQuery,
   useLazyCancelPlanQuery,
   useTransactionListQuery,
 } from "../../redux/features/subscribe/subscribeApi";
@@ -54,15 +55,11 @@ function SubscriptionPage() {
   };
 
 
+// get chat list
+  const { data: currentPlan } =
+    useCurrentPlanInfoQuery(null);
 
-  const activePlan = {
-    planStatus: true,
-    planName: "monthly",
-    startDate: "10-12-2025",
-    endDate: "20-12-2025",
-  };
-
-  const planStatus = true;
+    const currentPlanData = currentPlan?.data
 
   return (
     <div className="rounded-2xl  border border-black/10  p-5 lg:p-8">
@@ -118,7 +115,7 @@ function SubscriptionPage() {
               </span>
             </h4>
             <div className="lg:pt-8 pt-5">
-              <button disabled={planStatus} className="w-full disabled:cursor-not-allowed py-3 rounded-lg cursor-pointer bg-black/20 text-description font-medium">
+              <button disabled={currentPlanData?.plan_name !== 'free'} className="w-full disabled:cursor-not-allowed py-3 rounded-lg cursor-pointer bg-black/20 text-description font-medium">
                 Free Plan
               </button>
             </div>
@@ -136,16 +133,16 @@ function SubscriptionPage() {
             </h4>
             {
               <div className=" pb-4 mt-8">
-                {planStatus ? (
+                {currentPlanData?.plan_name !== 'free' ? (
                   <button
-                    disabled={planStatus}
+                    disabled={currentPlanData?.plan_name !== 'free'}
                     className="w-full h-12 flex justify-center items-center  group-hover:shadow-primary-btn/80 transition-all duration-300 shadow-btn shadow-primary-btn/40 capitalize disabled:cursor-not-allowed bg-black text-white  rounded-lg border font-medium cursor-pointer border-black/40 "
                   >
-                    {`${activePlan.planName} Plan Activated`}
+                    {`${currentPlanData?.plan_name} Plan Activated`}
                   </button>
                 ) : (
                   <Link to={"/upgrade-plan"} className="">
-                    <button className="w-full py-3 mt-8 rounded-lg cursor-pointer border bg-black text-white font-medium">
+                    <button className="w-full py-3  rounded-lg cursor-pointer border bg-black text-white font-medium">
                       Upgrade to Pro
                     </button>
                   </Link>

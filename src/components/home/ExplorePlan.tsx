@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router";
+import { useCurrentPlanInfoQuery } from "../../redux/features/subscribe/subscribeApi";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,14 +56,11 @@ function ExplorePlan() {
 
 
 
-  const activePlan = {
-    planStatus: true,
-    planName: "monthly",
-    startDate: "10-12-2025",
-    endDate: "20-12-2025",
-  };
+// get chat list
+  const { data: currentPlanInfo } =
+    useCurrentPlanInfoQuery(null);
 
-  const planStatus = true;
+    const currentPlanData = currentPlanInfo?.data
 
   return (
     <div id="pricing" className="lg:py-24 py-10 px-4">
@@ -97,7 +95,7 @@ function ExplorePlan() {
                   </h3>
                 </div>
                 <div className=" pb-4 mt-8 lg:mt-14">
-                  <button disabled={planStatus} className="w-full disabled:cursor-not-allowed py-2 lg:py-2.5 rounded-lg border font-medium cursor-pointer border-black/40 ">
+                  <button disabled={currentPlanData?.plan_name !== 'free'} className="w-full disabled:cursor-not-allowed py-2 lg:py-2.5 rounded-lg border font-medium cursor-pointer border-black/40 ">
                     Stay on Free Plan
                   </button>
                 </div>
@@ -141,12 +139,12 @@ function ExplorePlan() {
                 <div>
                   {
                     <div className=" pb-4 mt-14">
-                      {planStatus ? (
+                      {currentPlanData?.plan_name !== 'free' ? (
                         <button
-                          disabled={planStatus}
+                          disabled={currentPlanData?.plan_name !== 'free'}
                           className="w-full h-12 flex justify-center items-center  group-hover:shadow-primary-btn/80 transition-all duration-300 shadow-btn shadow-primary-btn/40 capitalize disabled:cursor-not-allowed bg-black text-white  rounded-lg border font-medium cursor-pointer border-black/40 "
                         >
-                          {`${activePlan.planName} Plan Activated`}
+                          {`${currentPlanData?.plan_name} Plan Activated`}
                         </button>
                       ) : (
                         <Link to={"/upgrade-plan"}>
