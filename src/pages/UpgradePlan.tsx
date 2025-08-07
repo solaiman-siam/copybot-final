@@ -111,7 +111,7 @@ function UpgradePlan() {
                     >
                     
                         {
-                          `${currentPlanInfo?.data?.plan_name} Plan Activated`
+                          currentPlanInfo ? `${currentPlanInfo?.data?.plan_name} Plan Activated` : 'Upgrade Plan'
                         }
                      
                     </button> : <button

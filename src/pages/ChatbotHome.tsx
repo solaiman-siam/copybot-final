@@ -2,7 +2,7 @@ import TextArea from "antd/es/input/TextArea";
 import { imageProvider } from "../utils/imageProvider";
 
 import { HiOutlineArrowUp } from "react-icons/hi";
-import { Check, Copy, Plus, Trash2, X } from "lucide-react";
+import { Plus, Trash2, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Modal, Popconfirm } from "antd";
 import type { IPrompt, TSubcategories } from "../types/global.types";
@@ -17,10 +17,8 @@ import {
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import toast from "react-hot-toast";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { TypewriterResponse } from "./TypeSwiterResponse";
 import ChatLoading from "../components/shared/ChatLoading";
 import { useChatMutation } from "../redux/features/stream/chatApi";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import { getProfileImageUrl } from "../utils/getAvatarImage";
 import {
   setNewChatToHistory,
@@ -65,16 +63,17 @@ function ChatbotHome() {
     setPromptValue(e.target.value);
     setPrompt(e.target.value);
   };
-  const [copy, setCopy] = useState(false);
   const [activePromt, setActivePromt] = useState(0);
   const [prompt, setPrompt] = useState<string>("");
   const [activeSub, setActiveSub] = useState<number | null>();
   const [subCategory, setSubCategory] = useState<TSubcategories[]>([]);
   const [promptValue, setPromptValue] = useState<string>("");
+  // @ts-ignore
   const [response, setResponse] = useState<string | null>("");
   const [waiting, setWaiting] = useState(false);
   const user = useAppSelector((state) => state?.auth?.user);
   const dispatch = useAppDispatch();
+  // @ts-ignore
   const [finalPrompt, setFinalPrompt] = useState("");
   const [generateChat] = useChatMutation();
   const chatId = useAppSelector((state) => state?.chatHistory?.chatId);

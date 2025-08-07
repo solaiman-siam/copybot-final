@@ -138,7 +138,7 @@ function SubscriptionPage() {
                     disabled={currentPlanData?.plan_name !== 'free'}
                     className="w-full h-12 flex justify-center items-center  group-hover:shadow-primary-btn/80 transition-all duration-300 shadow-btn shadow-primary-btn/40 capitalize disabled:cursor-not-allowed bg-black text-white  rounded-lg border font-medium cursor-pointer border-black/40 "
                   >
-                    {`${currentPlanData?.plan_name} Plan Activated`}
+                    { currentPlanData ? `${currentPlanData?.plan_name} Plan Activated` : 'Upgrade Plan'}
                   </button>
                 ) : (
                   <Link to={"/upgrade-plan"} className="">
