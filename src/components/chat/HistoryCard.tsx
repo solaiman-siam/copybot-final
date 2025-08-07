@@ -1,9 +1,8 @@
 import { Check, Copy } from "lucide-react";
 import { useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
-import { useAppSelector } from "../../redux/hooks";
 import type { THistory } from "../../redux/features/stream/chatHistoryslice";
-const HistoryCard = ({ fullImageUrl } : {fullImageUrl: string | null }) => {
+const HistoryCard = ({ fullImageUrl, historyData } : {fullImageUrl: string | null , historyData: THistory[] }) => {
 
   const [copyIndex, setCopyIndex] = useState<number | null>();
   const [copy, setCopy] = useState(false);
@@ -15,16 +14,15 @@ const HistoryCard = ({ fullImageUrl } : {fullImageUrl: string | null }) => {
     }, 1500);
   };
 
-  const newChat = useAppSelector(state => state.chatHistory.newChat)
-  const prevHistoryData : THistory[] = useAppSelector(state => state.chatHistory.history);
+  
 
   
 
   return (
     <div className="pt-8">
-      {prevHistoryData.slice(newChat ? 2 : 2).map((history , index) => (
-        <div key={history.id} className=" flex flex-col   ">
-          {history?.sender === "user" && (
+      {[...historyData]?.map((history, index) => (
+        <div key={history.id} className=" flex flex-col ">
+           {history?.sender === "user" && (
             <div className="flex justify-end items-start pb-6 pt-10  gap-3">
               <p className="font-medium capitalize flex-1 text-black/90 text-base ">
                 {history?.content}
@@ -41,7 +39,7 @@ const HistoryCard = ({ fullImageUrl } : {fullImageUrl: string | null }) => {
               </div>
             </div>
           )}
-          {history?.sender === "ai" && (
+           {history?.sender === "ai" && (
             <div key={history.id}>
               <div className="bg-black/15 flex justify-end px-4  rounded-t-xl py-2 ">
                 <CopyToClipboard text={`${history?.content}`}>
@@ -68,6 +66,8 @@ const HistoryCard = ({ fullImageUrl } : {fullImageUrl: string | null }) => {
               </p>
             </div>
           )}
+         
+         
         </div>
       ))}
     </div>

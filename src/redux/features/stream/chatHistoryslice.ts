@@ -41,14 +41,16 @@ export const chatHistorySlice = createSlice({
           content: prompt,
           created_at: currentISODate,
         },
-        {
+        
+         {
           id: Date.now() + 1,
           sender: "ai",
           content: response,
           created_at: currentISODate,
         },
+        
       ];
-      state.history = state.history.concat(conversationData);
+     state.history.unshift(...conversationData);
     },
     setChatIdToPrompt: (state, action) => {
       state.chatId = action.payload;

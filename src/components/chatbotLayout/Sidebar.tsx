@@ -242,21 +242,27 @@ function Sidebar() {
           </div>
         ) : (
           <div>
-            {currentPlanData?.plan_name !== 'free' ? (
+            { currentPlanData?.plan_name !== 'free' ? (
               <div>
-                <div className="flex flex-col items-center gap-2">
+                { currentPlanData ?
+                  <><div className="flex flex-col items-center gap-2">
                   <h4 className="w-full gap-1 text-sm flex rounded-md  justify-center items-center lg:text-lg font-semibold text-black">
                     <span className="capitalize  ">{currentPlanData?.plan_name}</span>
                     <span>Plan Activated</span>
                   </h4>
-                  <h4 className="text-sm">Valid until: {currentPlanData?.start_date}</h4>
+                  { <h4 className="text-sm">Valid until: {currentPlanData?.start_date}</h4>}
                 </div>
                 <button
                   onClick={() => setIsCancelSubscriptionModalOpen(true)}
                   className="w-full mt-4 bg-black h-10 text-sm lg:text-base lg:h-12 text-white rounded-md font-medium"
                 >
                   Cancel Plan
-                </button>
+                </button></> : <Empty
+                    style={{ fontWeight: "500" }}
+                    description={"No Data Found"}
+                    image={Empty.PRESENTED_IMAGE_SIMPLE}
+                  />
+                }
               </div>
             ) : (
               <div>

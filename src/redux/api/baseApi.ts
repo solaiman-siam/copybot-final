@@ -20,6 +20,6 @@ export const baseApi = createApi({
       return headers;
     },
   }) as CustomBaseQuery,
-  tagTypes: ['promptList', 'chatList'],
+  tagTypes: ['promptList', 'chatList' , 'freeLimit'],
   endpoints: () => ({}),
 });

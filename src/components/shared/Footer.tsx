@@ -111,10 +111,10 @@ function Footer() {
               {/* <Link to={""}>
                 <RiTwitterXLine className={iconHover} />
               </Link> */}
-              <a href="https://www.instagram.com/amandacatarzi/" target="_blank">
+              <a className="hover:translate-y-px transition-all duration-200" href="https://www.instagram.com/amandacatarzi/" target="_blank">
                 <FaInstagram className={iconHover} />
               </a>
-              <a href={"https://www.youtube.com/@AmandaCatarzi"} target="_blank">
+              <a className="hover:translate-y-px transition-all duration-200" href={"https://www.youtube.com/@AmandaCatarzi"} target="_blank">
                 <SlSocialYoutube className={iconHover} />
               </a>
               {/* <Link to={""}>

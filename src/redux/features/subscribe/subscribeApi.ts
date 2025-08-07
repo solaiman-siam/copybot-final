@@ -18,6 +18,7 @@ const subscribeApi = baseApi.injectEndpoints({
         url: "/user/free-plan-usage",
         method: "GET",
       }),
+      providesTags: ["freeLimit"],
       extraOptions: { requireAuth: true },
     }),
     upgradePlan: builder.mutation({

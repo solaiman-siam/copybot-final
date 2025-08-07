@@ -10,7 +10,7 @@ const chatApi = baseApi.injectEndpoints({
             method: 'POST',
             body: chatText
         }),
-        invalidatesTags: ['chatList'],
+        invalidatesTags: ['chatList' , 'freeLimit'],
         extraOptions: {requireAuth: true}
     }),
     chatList: builder.query({
