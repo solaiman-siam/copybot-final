@@ -1,5 +1,5 @@
 import { Check, Copy } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import type { THistory } from "../../redux/features/stream/chatHistoryslice";
 const HistoryCard = ({ fullImageUrl, historyData } : {fullImageUrl: string | null , historyData: THistory[] }) => {
@@ -14,22 +14,30 @@ const HistoryCard = ({ fullImageUrl, historyData } : {fullImageUrl: string | nul
     }, 1500);
   };
 
-  
+  console.log(historyData);
 
-  
+
+  useEffect(() => {
+     window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth",
+    });
+  }, [historyData])
+
+
 
   return (
     <div className="pt-8">
-      {[...historyData]?.map((history, index) => (
+      {[...historyData]?.reverse()?.map((history, index) => (
         <div key={history.id} className=" flex flex-col ">
            {history?.sender === "user" && (
-            <div className="flex justify-end items-start pb-6 pt-10  gap-3">
+            <div className="flex justify-end items-start pb-6 pt-10 gap-3">
               <p className="font-medium capitalize flex-1 text-black/90 text-base ">
                 {history?.content}
               </p>
               <div>
                 <img
-                  className="w-8 h-8 rounded-full object-cover "
+                  className="w-8 h-8 rounded-full object-cover"
                   src={
                     fullImageUrl ||
                     "https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"

@@ -35,17 +35,16 @@ export const chatHistorySlice = createSlice({
       const currentISODate = new Date().toISOString(); // Ensure this is defined
 
       const conversationData: THistory[] = [
-        {
-          id: Date.now(),
-          sender: "user",
-          content: prompt,
-          created_at: currentISODate,
-        },
-        
          {
           id: Date.now() + 1,
           sender: "ai",
           content: response,
+          created_at: currentISODate,
+        },
+         {
+          id: Date.now(),
+          sender: "user",
+          content: prompt,
           created_at: currentISODate,
         },
         

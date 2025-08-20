@@ -42,8 +42,9 @@ function Login() {
         toast.success(res?.message);
       }
     } catch (error: unknown) {
-        const errorMessage = error instanceof Error ? error.message : "Credentails not found";
-        toast.error(errorMessage);
+      const errorMessage =
+        error instanceof Error ? error.message : "Credentails not found";
+      toast.error(errorMessage);
     }
   };
 
@@ -63,17 +64,17 @@ function Login() {
       };
       try {
         const res = await googleLogin(googleInfo);
-        
-        if(res?.data?.status) {
+
+        if (res?.data?.status) {
           toast.success(res?.data?.message);
-        navigate("/chatbot-home");
-        setGoogleLoading(false);
-        dispatch(
-          setUser({
-            user: { ...res?.data?.data?.userData, avatar: null },
-            token: res?.data?.data?.token,
-          })
-        );
+          navigate("/chatbot-home");
+          setGoogleLoading(false);
+          dispatch(
+            setUser({
+              user: { ...res?.data?.data?.userData, avatar: null },
+              token: res?.data?.data?.token,
+            })
+          );
         }
       } catch (err) {
         const errorMessage =
@@ -93,7 +94,9 @@ function Login() {
           </Link>
           <div className="max-w-[450px] mx-auto mt-32 flex h-full flex-col items-center justify-center">
             <div className="flex flex-col items-center">
-              <h3 className="lg:text-3xl text-2xl text-center font-semibold pb-2">Welcome Back</h3>
+              <h3 className="lg:text-3xl text-2xl text-center font-semibold pb-2">
+                Welcome Back
+              </h3>
               <p className="text-black/50 text-[17px] font-medium">
                 Please login to continue to your account.
               </p>

@@ -119,9 +119,12 @@ function ChatbotHome() {
   // handleStream
   const handleStream = async () => {
     dispatch(setNewChat(false));
-    {
-      window.scrollTo(0, 0);
-    }
+    
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth",
+      });
+    
     if (prompt) {
       const chatText = {
         message: prompt,
@@ -211,7 +214,9 @@ function ChatbotHome() {
       console.error("Delete failed:", error);
     }
   };
-  const prevHistoryData : THistory[] = useAppSelector(state => state.chatHistory.history);
+  const prevHistoryData: THistory[] = useAppSelector(
+    (state) => state.chatHistory.history
+  );
 
   if (historyLoading) {
     return (
@@ -221,15 +226,16 @@ function ChatbotHome() {
     );
   }
 
-
-
-
   return (
     <div className="py-14 flex items-center flex-col w-full ">
       {newChat ? (
         <WelcomeInterface />
       ) : (
         <div className=" justify-start mb-40 px-4 lg:px-24 w-full  lg:w-[1000px] mx-auto">
+          <HistoryCard
+            historyData={prevHistoryData}
+            fullImageUrl={fullImageUrl}
+          />
           <div className="font-avant w-full lg:w-[799px] mx-auto flex-col flex  ">
             <div
               className={` flex justify-end  ${
@@ -254,7 +260,6 @@ function ChatbotHome() {
               </div>
             </div>
           </div>
-          <HistoryCard historyData={prevHistoryData} fullImageUrl={fullImageUrl} />
         </div>
       )}
       <div className=" rounded-2xl z-10 w-[92%] lg:w-[800px]    fixed border  border-black/10 overflow-hidden bottom-5  lg:bottom-16 ">
