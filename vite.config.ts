@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
   proxy: {
     '/api': {
-      target: 'https://copybot.softvencefsd.xyz',
+      target: 'https://api.mycopybot.com',
       changeOrigin: true,
       secure: true,
     },

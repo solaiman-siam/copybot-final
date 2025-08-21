@@ -6,6 +6,6 @@ export const getProfileImageUrl = (image: string | null) => {
     }else if (image.startsWith("http://") || image.startsWith("https://")) {
       return image;
     }else {
-      return `https://copybot.softvencefsd.xyz/${image}`;
+      return `https://api.mycopybot.com/${image}`;
     }
   };
