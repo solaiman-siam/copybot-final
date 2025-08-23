@@ -67,7 +67,7 @@ function Hero({ showModal }: TShowModal) {
                 Get Demo
               </CommonButton>
             </div>
-            <div className="pt-12 flex items-center ">
+            <div className="pt-12  flex items-center ">
               <div className="flex items-center ">
                 <img
                   className="size-10 rounded-full  "
@@ -87,11 +87,13 @@ function Hero({ showModal }: TShowModal) {
               </div>
 
               <Copy delay={0.5}>
-                {" "}
-                <h4 className=" px-4 lg:text-nowrap text-wrap py-2 lg:py-2.5 md:text-base text-[11px] md:-translate-x-5 rounded-full text-primary-btn font-medium border border-primary-btn/30">
+                <h4 className=" px-4 lg:text-nowrap text-wrap py-2 lg:py-2.5 md:text-base text-[11px] lg:flex hidden  rounded-full text-primary-btn font-medium border border-primary-btn/30">
                   Trusted by professional freelancers and business owners worldwide
                 </h4>
               </Copy>
+                <h4 className=" px-4 lg:text-nowrap text-wrap py-2 lg:hidden flex lg:py-2.5 md:text-base text-[11px]   rounded-full text-primary-btn font-medium border border-primary-btn/30">
+                  Trusted by professional freelancers and business owners worldwide
+                </h4>
             </div>
           </div>
           <div className="h-fit shadow-hero rounded-3xl shadow-primary-btn/10">
