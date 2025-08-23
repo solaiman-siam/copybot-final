@@ -32,13 +32,11 @@ function GoalSection({ showModal }: TShowModal) {
         <div className="flex relative py-16  justify-center flex-col items-center">
           <Copy delay={0.3}>
             <h3 className="lg:text-2xl hidden md:flex text-xl relative z-2 text-center pb-8 font-medium w-11/12 lg:w-7/12">
-            Trusted by 500+ marketers, copywriters, and coaches. Built by a real
-            copywriter. Not just another AI tool.
+            Trusted by professional freelancers and business owners worldwide. Built and expert, conversion focused copywriter. Not just another AI Tool.
           </h3>
           </Copy>
             <h3 className="lg:text-2xl md:hidden flex text-xl relative z-2 text-center pb-8 font-medium w-11/12 lg:w-7/12">
-            Trusted by 500+ marketers, copywriters, and coaches. Built by a real
-            copywriter. Not just another AI tool.
+            Trusted by professional freelancers and business owners worldwide. Built and expert, conversion focused copywriter. Not just another AI Tool.
           </h3>
             <CommonButton
               className="px-8 cursor-pointer font-medium shadow-btn relative z-2 hover:shadow-primary-btn/60 transition-all duration-200  shadow-primary-btn/40 py-2.5 rounded-md  "

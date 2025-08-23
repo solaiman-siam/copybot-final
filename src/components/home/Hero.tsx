@@ -88,8 +88,8 @@ function Hero({ showModal }: TShowModal) {
 
               <Copy delay={0.5}>
                 {" "}
-                <h4 className=" text-nowrap px-4 py-2.5 md:text-base text-xs md:-translate-x-5 rounded-full text-primary-btn font-medium border border-primary-btn/30">
-                  Trusted by 1 million+ happy users worlwide
+                <h4 className=" px-4 lg:text-nowrap text-wrap py-2 lg:py-2.5 md:text-base text-[11px] md:-translate-x-5 rounded-full text-primary-btn font-medium border border-primary-btn/30">
+                  Trusted by professional freelancers and business owners worldwide
                 </h4>
               </Copy>
             </div>
