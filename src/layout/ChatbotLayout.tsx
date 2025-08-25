@@ -12,7 +12,7 @@ function ChatbotLayout() {
         <Sidebar />
       </div>
       <div className="flex-1  bg-[#FEFCFB] relative min-h-screen">
-        <div className=" sticky top-0 ">
+        <div className=" sticky z-[100] top-0 ">
           <ContentNav />
         </div>
         <div className="w-full " >

@@ -119,12 +119,12 @@ function ChatbotHome() {
   // handleStream
   const handleStream = async () => {
     dispatch(setNewChat(false));
-    
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth",
-      });
-    
+
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth",
+    });
+
     if (prompt) {
       const chatText = {
         message: prompt,
@@ -177,6 +177,13 @@ function ChatbotHome() {
     }
   };
 
+     useEffect(() => {
+     window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth",
+    });
+  }, [prompt])
+
   // delete prompt
   const [
     deletePrompt,
@@ -227,11 +234,11 @@ function ChatbotHome() {
   }
 
   return (
-    <div className="py-14 flex items-center flex-col w-full ">
+    <div className="py-14 flex items-center relative flex-col w-full ">
       {newChat ? (
         <WelcomeInterface />
       ) : (
-        <div className=" justify-start mb-40 px-4 lg:px-24 w-full  lg:w-[1000px] mx-auto">
+        <div className=" justify-start mb-44 px-4 lg:px-[102px] w-full  lg:w-[1000px] mx-auto">
           <HistoryCard
             historyData={prevHistoryData}
             fullImageUrl={fullImageUrl}
@@ -262,7 +269,10 @@ function ChatbotHome() {
           </div>
         </div>
       )}
-      <div className=" rounded-2xl z-10 w-[92%] lg:w-[800px]    fixed border  border-black/10 overflow-hidden bottom-5  lg:bottom-16 ">
+      <div className="fixed w-[96%] lg:w-[800px]  lg:h-[150px] h-[100px]  bg-white  overflow-hidden bottom-0  lg:bottom-0">
+
+      </div>
+      <div className=" rounded-2xl z-10 w-[92%] lg:w-[800px] fixed border  border-black/10 overflow-hidden bottom-5  lg:bottom-16 ">
         <div className="bg-[#fff] shadow-lg px-2 pt-2 ">
           <div className="flex items-center gap-1  flex-wrap   w-full">
             {imageUrl.length > 0 &&
@@ -444,7 +454,7 @@ function ChatbotHome() {
               <div className=" flex flex-col flex-1">
                 <div>
                   <p className="text-black/50 text-xs flex items-center gap-1 font-medium pb-3 ">
-                    PREVIEW (WORKSPACE PROMPT){" "}
+                    PREVIEW (WORKSPACE PROMPT)
                     <span>
                       <BsExclamationCircle />
                     </span>

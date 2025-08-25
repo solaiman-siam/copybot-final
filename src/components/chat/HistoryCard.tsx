@@ -14,7 +14,6 @@ const HistoryCard = ({ fullImageUrl, historyData } : {fullImageUrl: string | nul
     }, 1500);
   };
 
-  console.log(historyData);
 
 
   useEffect(() => {

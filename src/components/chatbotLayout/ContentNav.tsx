@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 function ContentNav() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [logout, { isLoading }] = useLogoutMutation();
   const user = useAppSelector((state) => state.auth.user);
   const { avatar: profileImage, email } = user as {
@@ -21,10 +21,9 @@ function ContentNav() {
     email: string;
   };
 
-
   const fullImageUrl = getProfileImageUrl(profileImage);
 
-const handleLogout = async () => {
+  const handleLogout = async () => {
     // await logoutUser('')
 
     Swal.fire({
@@ -59,9 +58,11 @@ const handleLogout = async () => {
             timer: 2000, // Auto close after 2 seconds
             showConfirmButton: false,
           });
-        } catch (err : unknown) {
-          
-          const error = err instanceof Error ? err.message : "Failed to delete the item. Please try again."
+        } catch (err: unknown) {
+          const error =
+            err instanceof Error
+              ? err.message
+              : "Failed to delete the item. Please try again.";
           Swal.fire({
             title: "Error!",
             text: error,
@@ -98,15 +99,19 @@ const handleLogout = async () => {
     </div>
   );
 
-
   const handleSidebarOpen = () => {
-    dispatch(setToggleSidebar())
-  }
-  
+    dispatch(setToggleSidebar());
+  };
 
   return (
-    <div className="lg:py-2 py-1 items-center lg:bg-transparent bg-[#F4EFEC] right-0 left-0 px-4 flex justify-between  border-black/10  ">
-      <span onClick={handleSidebarOpen} className=" z-[100] lg:hidden flex relative" > <AlignLeft /></span>
+    <div className="lg:py-2 py-1  items-center !z-[2000] lg:bg-transparent bg-[#F4EFEC] right-0 left-0 px-4 flex justify-between  border-black/10  ">
+      <span
+        onClick={handleSidebarOpen}
+        className=" z-[100] lg:hidden flex relative"
+      >
+        {" "}
+        <AlignLeft />
+      </span>
       <Popover
         placement="bottomLeft"
         arrow={false}
@@ -142,7 +147,7 @@ const handleLogout = async () => {
           </span>
         </Popover> */}
 
-        <div className="p-1 hover:bg-black/5 transition-all duration-150 rounded-full ">
+        <div className="p-1 hover:bg-black/5  transition-all duration-150 rounded-full ">
           <Popover
             placement="bottomLeft"
             arrow={false}
