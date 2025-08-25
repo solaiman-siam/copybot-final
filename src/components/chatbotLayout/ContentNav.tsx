@@ -143,7 +143,7 @@ function ContentNav() {
           trigger="click"
         >
           <span className="py-2 px-2 rounded-full hover:bg-black/5 transition-all duration-150">
-            <EllipsisVertical className="size-5.5   cursor-pointer" />
+            <EllipsisVertical className="size-5.5  cursor-pointer" />
           </span>
         </Popover> */}
 
