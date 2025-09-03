@@ -104,10 +104,9 @@ function ChatbotHome() {
   };
 
   // subcategory
-  const handlePromt = (id : number, index: number, item: string) => {
+  const handlePromt = (id : number, index: number) => {
     setPromptSubcategoryId(id)
     setActiveSub(index);
-    setPrompt(item);
     setCustomPromptInterface(false);
   };
 
@@ -135,6 +134,10 @@ function ChatbotHome() {
   
   const {data : description} = useGetPromptDescriptionQuery(promptSubcategoryId , {skip: !promptSubcategoryId});
   const descriptionPrompt = description?.data;
+  
+  useEffect(() => {
+    setPrompt(descriptionPrompt)
+  } , [promptSubcategoryId , descriptionPrompt])
 
 
   // handleStream
@@ -467,7 +470,7 @@ function ChatbotHome() {
                   {promptsSubcategory?.map((category : {id: number, name: string}, index : number) => (
                     <h4
                     key={index}
-                      onClick={() => handlePromt( category?.id, index, category?.name)}
+                      onClick={() => handlePromt( category?.id, index)}
                       className={`${
                         activeSub === index ? "bg-black/5" : ""
                       } px-4 py-2 rounded-md text-base font-medium cursor-pointer  hover:bg-black/5`}
