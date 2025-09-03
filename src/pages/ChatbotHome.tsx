@@ -12,7 +12,13 @@ import WelcomeInterface from "../components/WelcomeInterface";
 // import StreamInterface from "../components/StreamInterface";
 import {
   useDeletePromptMutation,
+
+  useGetPromptCategoryListQuery,
+
+  useGetPromptDescriptionQuery,
+
   useGetpromptListQuery,
+  useGetPromptSubcategoryListQuery,
 } from "../redux/features/auth/promptApi";
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import toast from "react-hot-toast";
@@ -68,6 +74,8 @@ function ChatbotHome() {
   const [activeSub, setActiveSub] = useState<number | null>();
   const [subCategory, setSubCategory] = useState<TSubcategories[]>([]);
   const [promptValue, setPromptValue] = useState<string>("");
+  const [promptCategoryId, setPromptCategoryId] = useState<number | undefined>();
+  const [promptSubcategoryId, setPromptSubcategoryId] = useState<number | undefined>()
   // @ts-ignore
   const [response, setResponse] = useState<string | null>("");
   const [waiting, setWaiting] = useState(false);
@@ -89,19 +97,17 @@ function ChatbotHome() {
     useState<boolean>(false);
 
   // category
-  const handleCategory = (idx: number, category: string) => {
+  const handleCategory = (id: number, idx : number) => {
     setActivePromt(idx);
+    setPromptCategoryId(id)
     setCustomPromptInterface(false);
-    const subCategory = promtsCategory.filter(
-      (item) => item.category === category
-    );
-    setSubCategory(subCategory[0].subcategories);
     setActiveSub(null);
     setPrompt("");
   };
 
   // subcategory
-  const handlePromt = (index: number, item: string) => {
+  const handlePromt = (id : number, index: number, item: string) => {
+    setPromptSubcategoryId(id)
     setActiveSub(index);
     setPrompt(item);
     setCustomPromptInterface(false);
@@ -115,6 +121,23 @@ function ChatbotHome() {
       setCustomPromptInterface(false);
     }
   };
+
+
+  
+  // prompt library query
+
+
+  const {data : category} = useGetPromptCategoryListQuery(undefined);
+  const promtsCategory = category?.data
+
+  const {data : subcategory} = useGetPromptSubcategoryListQuery(promptCategoryId , {skip: !promptCategoryId});
+  const promptsSubcategory = subcategory?.data
+
+  // console.log( 'promptsSubcategory', promptsSubcategory);
+  
+  const {data : description} = useGetPromptDescriptionQuery(promptSubcategoryId , {skip: !promptSubcategoryId});
+  const descriptionPrompt = description?.data;
+
 
   // handleStream
   const handleStream = async () => {
@@ -232,6 +255,11 @@ function ChatbotHome() {
       </div>
     );
   }
+
+
+
+
+
 
   return (
     <div className="py-14 flex items-center relative flex-col w-full ">
@@ -376,14 +404,15 @@ function ChatbotHome() {
               </div>
               <hr className="mr-4  text-black/10" />
               <div className="overflow-y-auto px-1 pt-1 space-y-px ">
-                {promtsCategory.map((category, index) => (
+                {promtsCategory?.map((category : {id: number, name: string}, index : number) => (
                   <h4
-                    onClick={() => handleCategory(index, category.category)}
+                  key={category?.id}
+                    onClick={() => handleCategory(category?.id, index)}
                     className={`${
                       activePromt === index ? "bg-black/5" : ""
                     } px-4 py-2 rounded-md text-base font-medium cursor-pointer  hover:bg-black/5`}
                   >
-                    {category.category}
+                    {category?.name}
                   </h4>
                 ))}
               </div>
@@ -404,6 +433,7 @@ function ChatbotHome() {
                   <div className="pt-4">
                     {promptData?.map((prompt: IPrompt, idx: number) => (
                       <h4
+                      key={idx}
                         className={`${
                           customPromptIndex === idx ? "bg-black/5" : ""
                         } px-4 py-2 rounded-md text-base font-medium cursor-pointer flex items-center justify-between  hover:bg-black/5`}
@@ -436,9 +466,10 @@ function ChatbotHome() {
                 </div>
               ) : (
                 <>
-                  {subCategory.map((category, index) => (
+                  {promptsSubcategory?.map((category : {id: number, name: string}, index : number) => (
                     <h4
-                      onClick={() => handlePromt(index, category.prompt)}
+                    key={index}
+                      onClick={() => handlePromt( category?.id, index, category?.name)}
                       className={`${
                         activeSub === index ? "bg-black/5" : ""
                       } px-4 py-2 rounded-md text-base font-medium cursor-pointer  hover:bg-black/5`}
@@ -462,7 +493,7 @@ function ChatbotHome() {
                 </div>
                 <div className="border flex-1 border-black/10 max-h-[290px] overflow-y-auto  rounded-lg p-4">
                   <p className="font-medium text-base text-textPrimary">
-                    {prompt}
+                    {descriptionPrompt && descriptionPrompt}
                   </p>
                 </div>
               </div>

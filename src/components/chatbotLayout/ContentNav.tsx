@@ -109,7 +109,6 @@ function ContentNav() {
         onClick={handleSidebarOpen}
         className=" z-[100] lg:hidden flex relative"
       >
-        {" "}
         <AlignLeft />
       </span>
       <Popover
