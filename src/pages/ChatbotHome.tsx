@@ -5,9 +5,8 @@ import { HiOutlineArrowUp } from "react-icons/hi";
 import { Plus, Trash2, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Modal, Popconfirm } from "antd";
-import type { IPrompt, TSubcategories } from "../types/global.types";
+import type { IPrompt } from "../types/global.types";
 import { BsExclamationCircle } from "react-icons/bs";
-import { promtsCategory } from "../utils/staticData";
 import WelcomeInterface from "../components/WelcomeInterface";
 // import StreamInterface from "../components/StreamInterface";
 import {
@@ -72,7 +71,6 @@ function ChatbotHome() {
   const [activePromt, setActivePromt] = useState(0);
   const [prompt, setPrompt] = useState<string>("");
   const [activeSub, setActiveSub] = useState<number | null>();
-  const [subCategory, setSubCategory] = useState<TSubcategories[]>([]);
   const [promptValue, setPromptValue] = useState<string>("");
   const [promptCategoryId, setPromptCategoryId] = useState<number | undefined>();
   const [promptSubcategoryId, setPromptSubcategoryId] = useState<number | undefined>()
