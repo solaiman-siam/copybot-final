@@ -31,13 +31,18 @@ function VerifyEmail() {
   const storedEmail = localStorage.getItem("signUpEmail");
   const email = storedEmail ? JSON.parse(storedEmail) : null;
 
-  const MaskedEmail = ({ email }: { email: string }) => {
-    const maskEmail = (email: string) => {
-      const [name, domain] = email && email.split("@");
-      if (name?.length <= 4) return email; 
+  const MaskedEmail = ({ email }: { email: string | null }) => {
+    const maskEmail = (email: string | null) => {
+      if (!email || !email.includes("@")) return "";
+
+      const [name, domain] = email.split("@");
+      if (!name || !domain) return email;
+
+      if (name.length <= 4) return `${name}@${domain}`;
 
       const masked =
-        name?.slice(0, 2) + "*".repeat(name?.length - 4) + name?.slice(-2);
+        name.slice(0, 2) + "*".repeat(name.length - 4) + name.slice(-2);
+
       return `${masked}@${domain}`;
     };
 
@@ -120,7 +125,9 @@ function VerifyEmail() {
           </Link>
           <div className="max-w-[450px] mx-auto mt-32 flex h-full flex-col items-center justify-center">
             <div className="flex flex-col items-center">
-              <h3 className="lg:text-3xl text-2xl text-center font-semibold pb-2 ">Please check your spam folder</h3>
+              <h3 className="lg:text-3xl text-2xl text-center font-semibold pb-2 ">
+                Please check your spam folder
+              </h3>
               <div className="text-black/50 w-11/12 text-center text-[17px] font-medium">
                 <span className="text-nowrap">
                   Enter the verification code we just sent to{" "}
@@ -173,7 +180,6 @@ function VerifyEmail() {
                     {isLoading ?   <Loader  className="animate-spin size-6" /> : 'Verify'}
                   </CommonButton> */}
                     <h4 className=" mt-6  text-center ">
-                      {" "}
                       <span className="text-black/70">
                         Didn’t receive code?
                       </span>{" "}
