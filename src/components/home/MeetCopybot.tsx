@@ -114,7 +114,7 @@ function MeetCopybot({ showModal }: TShowModal) {
   };
 
   return (
-    <div id="features" className="lg:pt-52 pt-20 px-4 lg:px-0 relative z-[8]">
+    <div id="features" className="lg:pt-52 pt-20 px-4 lg:px-6 relative z-[8]">
       <Container>
         <div className="flex justify-center flex-col items-center gap-2">
           <Copy delay={0.3}>
@@ -150,7 +150,7 @@ function MeetCopybot({ showModal }: TShowModal) {
                 alt=""
               />
               <img
-                className="absolute copybot-image lg:bottom-8 lg:-left-52 -left-8  z-4 "
+                className="absolute copybot-image lg:bottom-8  lg:-left-24 2xl:-left-32 -left-8  z-4 "
                 src={imageProvider.MetBotImage2}
                 alt=""
               />

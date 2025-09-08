@@ -149,12 +149,12 @@ function Sidebar() {
     <div
       ref={sidebarRef}
       className={`lg:w-[350px] w-[300px] ${
-        toggleSidebar ? "-translate-x-100" : "translatex-x-0"
-      } z-[100] transition-all duration-300  flex left-0  fixed flex-col justify-between bg-[#F4EFEC] min-h-screen p-6`}
+        !toggleSidebar ? "-translate-x-100 lg:translate-none" : "translatex-x-0 lg:translate-none"
+      }  transition-all duration-300  flex left-0 z-[200] fixed flex-col justify-between bg-[#F4EFEC] min-h-screen p-6`}
     >
       <span
         onClick={handleSidebarToggle}
-        className="bg-black p-1.5 lg:hidden flex rounded-full text-white z-[200] absolute top-4 right-3"
+        className="bg-black p-1.5 lg:hidden  flex rounded-full text-white  absolute top-4 right-3"
       >
         <X className="size-4" />
       </span>
@@ -165,6 +165,7 @@ function Sidebar() {
             src={imageProvider.CopybotLogoGray}
             alt="logo-gray"
           />
+          
         </Link>
         <div className="pt-12 space-y-4">
           <Link to={"/chatbot-home"} onClick={handleNewChat}>

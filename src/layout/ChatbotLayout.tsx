@@ -8,7 +8,7 @@ function ChatbotLayout() {
       <div className="w-[350px] lg:flex hidden ">
         <Sidebar />
       </div>
-      <div className="left-0 absolute top-0 z-100 min-h-screen">
+      <div className="left-0 absolute top-0 z-[300] min-h-screen">
         <Sidebar />
       </div>
       <div className="flex-1  bg-[#FEFCFB] relative min-h-screen">

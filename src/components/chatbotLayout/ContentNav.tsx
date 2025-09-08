@@ -104,10 +104,10 @@ function ContentNav() {
   };
 
   return (
-    <div className="lg:py-2 py-1  items-center !z-[2000] lg:bg-transparent bg-[#F4EFEC] right-0 left-0 px-4 flex justify-between  border-black/10  ">
+    <div className="lg:py-2 py-1  items-center   lg:bg-transparent bg-[#F4EFEC] right-0 left-0 px-4 flex justify-between  border-black/10  ">
       <span
         onClick={handleSidebarOpen}
-        className=" z-[100] lg:hidden flex relative"
+        className="  lg:hidden flex relative"
       >
         <AlignLeft />
       </span>

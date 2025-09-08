@@ -31,7 +31,7 @@ function ClientReview() {
 }, []);
 
   return (
-    <div className="bg-[#141413] py-14 lg:py-24">
+    <div className="bg-[#141413] py-14 lg:px-6 2xl:px-0 lg:py-24">
       <Container>
         <div className="px-4 lg:px-0">
           <Copy delay={0.5}>
@@ -61,7 +61,7 @@ function ClientReview() {
               alt="review"
             />
             <img
-              className="h-full select-none review-image"
+              className="h-full lg:mt-6 select-none review-image"
               src={imageProvider.ReviewImg5}
               alt="review"
             />

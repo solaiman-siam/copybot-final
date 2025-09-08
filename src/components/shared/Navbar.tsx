@@ -155,7 +155,7 @@ function Navbar({ showModal }: TShowModal) {
   // console.log(data);
 
   return (
-    <div className="lg:py-8 py-0 flex justify-center items-center relative">
+    <div className="lg:py-8 py-0 lg:px-6 flex justify-center items-center relative">
       <Container>
         <div
           ref={navRef}
@@ -202,7 +202,7 @@ function Navbar({ showModal }: TShowModal) {
       {/* navbar small screen */}
       <div
         ref={smallNavRef}
-        className=" w-screen md:hidden mx-auto  z-[10] rounded-full px-1  fixed top-0  "
+        className=" w-screen md:hidden mx-auto z-[100]  rounded-full px-1   fixed top-0  "
       >
         <div className="mt-1">
           <div className="bg-black flex justify-between rounded-full px-6 items-center h-14">

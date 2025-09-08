@@ -37,7 +37,7 @@ function Hero({ showModal }: TShowModal) {
   };
 
   return (
-    <div className="relative z-[1] mt-24 px-4 lg:px-0 md:mt-20">
+    <div className="relative z-[1] mt-24 px-4 lg:px-6 2xl:px-0 md:mt-20">
       <Container>
         <div className=" grid grid-cols-1 md:grid-cols-2 items-center gap-16 md:gap-20">
           <div>
@@ -47,7 +47,7 @@ function Hero({ showModal }: TShowModal) {
                   Turn Words Into Cash Flow - In Seconds.
                 </p>
 
-                <h1 className="md:text-[2.6rem] text-wrap text-[1.5rem] flex-wrap font-semibold leading-[38px]  md:leading-[60px]">
+                <h1 className="md:text-[2.6rem] lg:text-[2.3rem] 2xl:text-[2.6rem] text-wrap text-[1.5rem] flex-wrap font-semibold leading-[38px]  md:leading-[60px]">
                   Generate scroll-stopping hooks, persuasive emails and{" "}
                   <span className="text-primary-btn">high-converting ad</span>{" "}
                   copy with Copybot.
@@ -80,14 +80,14 @@ function Hero({ showModal }: TShowModal) {
                   alt=""
                 />
                 <img
-                  className="size-10 -translate-x-6 rounded-full  "
+                  className="size-10  -translate-x-6 rounded-full  "
                   src="https://media.craiyon.com/2025-04-15/hkJ6T1RTTnKGHXOE7rIMiA.webp"
                   alt=""
                 />
               </div>
 
               <Copy delay={0.5}>
-                <h4 className=" px-4 lg:text-nowrap text-wrap py-2 lg:py-2.5 md:text-base text-[11px] lg:flex hidden  rounded-full text-primary-btn font-medium border border-primary-btn/30">
+                <h4 className=" px-4  lg:text-wrap 2xl:text-nowrap text-wrap py-2 lg:py-2.5 md:text-base text-[11px] lg:flex hidden  rounded-full text-primary-btn font-medium border border-primary-btn/30">
                   Trusted by professional freelancers and business owners worldwide
                 </h4>
               </Copy>
@@ -104,12 +104,12 @@ function Hero({ showModal }: TShowModal) {
                 alt=""
               />
               <img
-                className="absolute hero-images bottom-4 left-0 z-[4] "
+                className="absolute hero-images bottom-4  left-0 z-[4] "
                 src={imageProvider.HeroChatImage1}
                 alt=""
               />
               <img
-                className="absolute hero-images  top-24 md:absolute -left-4 md:left-90  md:top-72 z-[8] "
+                className="absolute hero-images  top-24 md:absolute  lg:left-65 2xl:left-90 -left-4 md:left-90  md:top-72 z-[8] "
                 src={imageProvider.HeroReview}
                 alt=""
               />

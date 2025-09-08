@@ -42,7 +42,7 @@ function Footer() {
   
  
   return (
-    <div className="bg-[#141413] lg:px-0 px-4 pt-16">
+    <div className="bg-[#141413] lg:px-6 2xl:px-0 px-4 pt-16">
       <Container>
         <div className="grid gap-10 lg:gap-10 lg:grid-cols-12">
           <div className="col-span-4 w-full flex flex-col ">

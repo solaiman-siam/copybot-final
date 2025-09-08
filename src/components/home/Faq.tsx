@@ -5,7 +5,7 @@ function Faq() {
 
 
   return (
-    <div id="faq" className="lg:py-24 py-14 px-4 lg:px-0">
+    <div id="faq" className="lg:py-24 py-14 px-4 lg:px-6 2xl:px-0">
       <Container>
         <div>
          <Copy delay={0.3}>

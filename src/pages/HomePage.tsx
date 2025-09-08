@@ -85,7 +85,7 @@ function HomePage() {
   });
 
   return (
-    <div className="relative  md:px-0">
+    <div className="relative   md:px-0">
       <Navbar showModal={showModal} />
       <div className="main-content ">
         <Hero showModal={showModal} />
@@ -118,8 +118,7 @@ function HomePage() {
               Welcome to Copybot
             </h3>
             <p className="font-medium text-description pt-3 text-center w-10/12">
-              We recommend signing up with your work email to keep all your
-              marketing content in one place
+              Please sign in with your email or create your free account
             </p>
           </div>
           <div className="">
@@ -141,7 +140,7 @@ function HomePage() {
           <div className="flex items-center gap-4">
             <hr className="flex-1 text-black/10" />
             <p className="font-medium text-description">
-              Or continue with work email
+              Please sign in with your email
             </p>
             <hr className="flex-1 text-black/10" />
           </div>
